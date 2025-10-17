@@ -4,8 +4,8 @@
  * Section: CSE 154 AA
  *
  * This is the JS file for the memory-challenging game “Find the Same”.
- * It fills out the game board with randoom paring cards, tracks the player’s finishing time,
- * handles flips and matches, calls in the start at the biginning, and triger the end dialog when
+ * It fills out the game board with random pairing cards, tracks the player’s finishing time,
+ * handles flips and matches, calls in the start at the beginning, and trigger the end dialog when
  * the game is finished.
  */
 "use strict";
@@ -52,7 +52,7 @@
   }
 
   /**
-   * Set a count down timer. Only does minute and second with a pattern of "00:00".
+   * Active the count down timer. Only does minute and second with a pattern of "00:00".
    */
   function countDown() {
     let startTime = new Date().getTime();
@@ -76,7 +76,7 @@
    * Turn a head-down card to head-up. Also triger the match ckecking and win checking.
    */
   function cardTurn() {
-    if (qsa(".flipped").length === 2 ) {
+    if (qsa(".flipped").length === 2) {
       return;
     }
     let back = this;
@@ -93,7 +93,7 @@
   }
 
   /**
-   * Check whether all pairs are done. If so, calls an end to the game
+   * Checks if all pairs are matched and triggers the end dialog if so.
    */
   function checkWin() {
     if (qsa(".matched").length === qsa(".card").length) {
@@ -224,15 +224,15 @@
   /**
    * Returns a element with the given tagname.
    * @param {string} tagname - HTML element tagname
-   * @returns {object[]} a HTML element that hasn't bind with DOM yet.
+   * @returns {HTMLElement} a HTML element that hasn't bind with DOM yet.
    */
   function gen(tagname) {
     return document.createElement(tagname);
   }
 
   /**
-   * Returns an random interger ranging from 0 to max.
-   * @param {string} max - the largest ipossible integer
+   * Returns an random integer ranging from 0 to max.
+   * @param {string} max - the largest possible integer
    * @returns {integer} an integer ranging from 0 to max
    */
   function getRandomInt(max) {
