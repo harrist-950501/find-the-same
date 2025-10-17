@@ -92,12 +92,19 @@
     checkWin();
   }
 
+  /**
+   * Check whether all pairs are done. If so, calls an end to the game
+   */
   function checkWin() {
     if (qsa(".matched").length === qsa(".card").length) {
       endGame();
     }
   }
 
+  /**
+   * Check if the two flipped card are match. If so, keep them head-up and add match-count. If
+   * not, turn the two cards down after a short pause.
+   */
   function checkMatch() {
     let flippedCards = qsa(".flipped");
     if (flippedCards.length === 2) {
@@ -119,6 +126,10 @@
     }
   }
 
+  /**
+   * End the game by calling in the end screen. Wait the user to click either "Yes" for second
+   * round or "No" to return to the finished game.
+   */
   function endGame() {
     clearInterval(timer);
     id("end-time").textContent = qs("#timer em").textContent;
@@ -134,6 +145,9 @@
     });
   }
 
+  /**
+   * Reset timer, match-count, and game board. The card set will be different.
+   */
   function reset() {
     id("game-board").innerHTML = "";
     clearInterval(timer);
@@ -146,6 +160,9 @@
     countDown();
   }
 
+  /**
+   * Random assign emoji to the front of the cards. In other word, "shuffle the card".
+   */
   function randomCardFrontAssign() {
     for (let i = 0; i < CARDS.length * 2; i++) {
       let cards = qsa(".card");
