@@ -1,0 +1,163 @@
+/*
+  Name: Harry Cheng
+  Date: 10.12.2025
+  Section: CSE 154 AA
+
+*/
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  background-color: #F8FAFC;
+  color: #64748B;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, h2, h3 {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+header {
+  border-radius: 20px;
+  padding: 5px;
+  background-color: #ccdcbd;
+}
+
+button {
+  height: 3em;
+  width: auto;
+  border-radius: 8px;
+  border: 2px solid #94A3B8;
+  background-color: whitesmoke;
+  color: inherit;
+}
+
+button:hover {
+  background-color: #E0F2FE;
+  border-color: #798595;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 45px;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  text-align: center;
+  letter-spacing: 0.2em;
+  color: #0F172A;
+}
+
+h2 {
+  color: #1E3A8A;
+}
+
+main {
+  background-color: #cddbea;
+  margin-top: 2em;
+  padding: 5px;
+  text-align: center;
+  border-top: #133090 15px solid;
+  border-bottom: #133090 15px solid;
+}
+
+em {
+  color: #1E40AF;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+a {
+  color: #3B82F6;
+}
+
+a:visited {
+  color: #c8a2d8;
+}
+
+footer {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 40px;
+  padding: 5px;
+  color: #94A3B8;
+  background-color: #d3def173;
+}
+
+dialog {
+  width: 75%;
+  border: 6px solid #7b94b7;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: inherit;
+}
+
+#logo {
+  object-fit: cover;
+  height: 100px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#info-bar {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+
+}
+
+.front, .back {
+  height: 150px;
+  width: 150px;
+  border: 4px solid #b2c3d7;
+  border-radius: 12px;
+}
+
+.front {
+  background-color: #E8F0FF;
+}
+
+.hide {
+  display: none;
+}
+
+.back {
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.back:hover {
+  border-color: gold;
+  box-shadow: 0 4px 12px rgba(255, 220, 22, 0.649);
+  transform: scale(1.03);
+}
+
+.matched {
+  opacity: 0.5;
+  border-color: #22C55E;
+}
+
+#overlay-end-screen section {
+  display: flex;
+  justify-content: space-evenly;
+}
