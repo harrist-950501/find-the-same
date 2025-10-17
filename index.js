@@ -1,3 +1,13 @@
+/*
+ * Name: Harry CHeng
+ * Date: 10/12/2025
+ * Section: CSE 154 AA
+ *
+ * This is the JS file for the memory-challenging game “Find the Same”.
+ * It fills out the game board with randoom paring cards, tracks the player’s finishing time,
+ * handles flips and matches, calls in the start at the biginning, and triger the end dialog when
+ * the game is finished.
+ */
 "use strict";
 (function() {
   const CARDS = ["img/cat.png", "img/dog.png", "img/deer.png", "img/chipmunk.png",
@@ -5,46 +15,67 @@
     "img/whale.png"];
 
   let timer = null;
+  const MILISEC = 1000;
+  const SIXTY = 60;
+  const TEN = 10;
+
+  const PAUSE = 1500; // in millisecond
+
+  // to generate alternative text for images, catch the key word of the link with slice()
+  const CHARBEFORE = 4;
+  const CHARAFTER = -4;
 
   window.addEventListener("load", init);
 
+  /**
+   * Initialize the game:
+   *  Active the start screen
+   *  Assign random pairs of card on the game board
+   *  Prepare "reset" button
+   */
   function init() {
     startScreenActive();
     randomCardFrontAssign();
-    qsa(".back").forEach(img => {img.addEventListener("click", cardTurn);});
     qs("#info-bar button").addEventListener("click", reset);
   }
 
+  /**
+   * Active the start screen and wait for the user to click "start" to start the count down.
+   */
   function startScreenActive() {
-    let start_screen = id("overlay-start-screen");
-    start_screen.showModal();
+    let startScreen = id("overlay-start-screen");
+    startScreen.showModal();
     qs("#overlay-start-screen button").addEventListener("click", () => {
-      start_screen.close();
+      startScreen.close();
       countDown();
     });
   }
 
+  /**
+   * Set a count down timer. Only does minute and second with a pattern of "00:00".
+   */
   function countDown() {
     let startTime = new Date().getTime();
     timer = setInterval(() => {
       let currentTime = new Date().getTime();
-      let elapsedTime = Math.floor((currentTime - startTime) / 1000);
+      let elapsedTime = Math.floor((currentTime - startTime) / MILISEC);
 
-      let minute = Math.floor(elapsedTime / 60);
-      let second = elapsedTime % 60;
-      if(minute < 10) {
+      let minute = Math.floor(elapsedTime / SIXTY);
+      let second = elapsedTime % SIXTY;
+      if (minute < TEN) {
         minute = "0" + minute;
       }
-      if(second < 10) {
+      if (second < TEN) {
         second = "0" + second;
       }
       qs("#timer em").textContent = minute + ":" + second;
-    }, 1000);
+    }, MILISEC);
   }
 
-
+  /**
+   * Turn a head-down card to head-up. Also triger the match ckecking and win checking.
+   */
   function cardTurn() {
-    // No flipping during the 1.5 seconds pause
     if (qsa(".flipped").length === 2 ) {
       return;
     }
@@ -83,8 +114,7 @@
           card1.previousElementSibling.classList.toggle("hide");
           card2.classList.replace("flipped", "hide");
           card2.previousElementSibling.classList.toggle("hide");
-        }, 1500);
-        // give a 1.5 seconds pause for memorizing the location
+        }, PAUSE);
       }
     }
   }
@@ -110,7 +140,9 @@
     qs("#timer em").textContent = "00:00";
     qs("#match-count em").textContent = "0";
     randomCardFrontAssign();
-    qsa(".back").forEach(img => {img.addEventListener("click", cardTurn);});
+    qsa(".back").forEach(img => {
+      img.addEventListener("click", cardTurn);
+    });
     countDown();
   }
 
@@ -122,13 +154,14 @@
 
       let front = gen("img");
       front.src = CARDS[cardIndex];
-      front.alt = "A cute " + CARDS[cardIndex].slice(4, -4) + " emoji";
+      front.alt = "A cute " + CARDS[cardIndex].slice(CHARBEFORE, -CHARAFTER) + " emoji";
       front.classList.add("front", "hide");
 
       let back = gen("img");
       back.src = "img/card-back.png";
       back.alt = "A cool designed back of the card";
       back.classList.add("back");
+      back.addEventListener("click", cardTurn);
 
       let card = gen("article");
       card.classList.add("card");
@@ -146,7 +179,7 @@
 
   /**
    * Returns the element that has the ID attribute with the specified value.
-   * @param {string} name - element ID.
+   * @param {string} id - element ID.
    * @returns {object} - DOM object associated with id.
    */
   function id(id) {
