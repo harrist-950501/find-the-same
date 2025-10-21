@@ -231,9 +231,9 @@
   }
 
   /**
-   * Returns an random integer ranging from 0 to max.
-   * @param {string} max - the largest possible integer
-   * @returns {integer} an integer ranging from 0 to max
+   * Returns an random integer ranging from 0 (inclusive) to max (exclusive).
+   * @param {string} max - the upper border of the ramdom integer
+   * @returns {integer} an random integer form 0 (inclusive) to max (exclusive)
    */
   function getRandomInt(max) {
     return Math.floor(Math.random() * max + 1);
