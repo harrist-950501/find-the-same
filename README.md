@@ -22,27 +22,13 @@ Find The Same is a single-page web game where players flip cards to uncover matc
 - JavaScript
 - Google Fonts
 
-## Project Structure
-
-```text
-.
-|-- index.html
-|-- styles.css
-|-- index.js
-|-- project-summary.md
-`-- img/
-    |-- logo.png
-    |-- card-back.png
-    `-- animal card images
-```
-
 ## Purpose
 
 This project demonstrates core front-end development skills through an interactive game interface, including DOM manipulation, event handling, dynamic content generation, and UI state updates in the browser.
 
 ## Live Site
 
-Add deployment link here.
+[Find the same](https://harrist-950501.github.io/find-the-same/)
 
 ## Author
 
